@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "userId": 101,
+      "reportName": "Monthly Expenses",
+      "reportType": "Monthly",
+      "startDate": "2023-09-01",
+      "endDate": "2023-09-30",
+      "content": "{\"total_expenses\": 1950.00, \"total_income\": 3000.00, \"category_breakdown\": {\"Food\": 500.00, \"Rent\": 1500.00, \"Others\": 950.00}}"
+    },
+    {
+      "id": 2,
+      "userId": 102,
+      "reportName": "Yearly Savings",
+      "reportType": "Yearly",
+      "startDate": "2023-01-01",
+      "endDate": "2023-12-31",
+      "content": "{\"total_savings\": 5500.00, \"total_income\": 18000.00, \"category_breakdown\": {\"Food\": 2100.00, \"Rent\": 6000.00, \"Vacation\": 3000.00, \"Others\": 900.00}}"
+    },
+    {
+      "id": 3,
+      "userId": 103,
+      "reportName": "Monthly Grocery Expenses",
+      "reportType": "Monthly",
+      "startDate": "2023-09-01",
+      "endDate": "2023-09-30",
+      "content": "{\"total_expenses\": 300.00, \"total_income\": 1200.00, \"category_breakdown\": {\"Groceries\": 300.00, \"Others\": 900.00}}"
+    }
+]
+  
