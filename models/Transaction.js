@@ -1,7 +1,7 @@
-const { Model, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Transaction extends Model {}
+class Transaction extends Model { }
 
 Transaction.init(
   {
@@ -11,32 +11,34 @@ Transaction.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    userId: {
+    amount: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      references: {
-        model: 'user', // Make sure to match the actual table name for users
-        key: 'id',
-      },
-    },
-    transactionDate: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    category: { // We may need to check the categories
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    amount: {
-      type: DataTypes.DECIMAL(10, 2),
-      allowNull: false,
-    },
-    notes: {
-      type: DataTypes.STRING,
     },
     type: {
-      type: DataTypes.ENUM('Income', 'Expense'), // Enumerated type for income or expense
+      type: DataTypes.STRING,
       allowNull: false,
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
+
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: 'id',
+      },
     },
   },
   {
