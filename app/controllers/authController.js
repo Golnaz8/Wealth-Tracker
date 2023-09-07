@@ -1,6 +1,5 @@
-// controllers/authController.js
-
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 const authController = {
   register: async (req, res) => {
@@ -16,8 +15,13 @@ const authController = {
         return res.status(400).json({ error: 'User already exists' });
       }
 
-      // Create a new user in the database
-      const newUser = await User.create({ username, email, password });
+      // Hash and salt the user's password
+      const saltRounds = 10; // Number of salt rounds 
+
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+
+      // Create a new user in the database with the hashed password
+      const newUser = await User.create({ username, email, password: hashedPassword });
 
       // Set up a session for the new user
       req.session.userId = newUser.id;
