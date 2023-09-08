@@ -1,0 +1,24 @@
+# Node.js / Express.js
+node_modules/
+npm-debug.log
+*.log
+
+# Sequelize
+/config/config.json
+/config/connection.js
+/db/schema.sql
+/db/seeds/
+
+
+# IDE and Editor-specific
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Environment variables
+.env
+
+# OS-generated files
+.DS_Store
+Thumbs.db
