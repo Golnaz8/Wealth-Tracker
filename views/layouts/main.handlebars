@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wealth Tracker</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="flex-column justify-space-around">
+    <header class="display-flex align-center p-2">
+      <h1>
+        <span role="img" aria-label="money">:money_with_wings:</span>
+        <span class="mr-5">Wealth Tracker</span>
+      </h1>
+      <h3 class="mr-5"><a href="/">Home</a></h3>
+      <h3 class="mr-5"><a href="/dashboard">Dashboard</a></h3>
+      <!-- Conditionally render login or logout links -->
+      {{#if logged_in}}
+      <h3><button class="no-button" id="logout">logout</button></h3>
+      {{else}}
+      <h3><a href="/login">login</a></h3>
+      {{/if}}
+    </header>
+    <main class="container container-fluid mt-5">
+      <!-- Render the sub layout -->
+      {{{ body }}}
+    </main>
+    <footer>
+    </footer>
+  </div>
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\
+
+
+
+
+
+
+
+
+
