@@ -1,27 +1,31 @@
 <div class="col-md-6">
-    <h3>Transaction details:</h3>
-
-    <form class=" edit-transaction-form" data-id="{{transaction.id}}">
-        <div class="form-group">
-            <label for="edit-tr-type">Transaction Type:</label>
-            <input class="form-input" type="text" id="edit-tr-type" name="edit-tr-title" value="{{transaction.type}}" />
-        </div>
-        <div class="form-group">
-            <label for="edit-tr-desc">Amount:</label>
-            <textarea class="form-input" id="edit-tr-amount" name="edit-tr-amount">{{transaction.amount}}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="edit-tr-category">Category:</label>
-            <textarea class="form-input" id="edit-tr-category" name="edit-tr-category">{{transaction.category}}</textarea>
-        </div>
-        <div class="form-group">
-            <label for="edit-tr-desc">Description:</label>
-            <textarea class="form-input" id="edit-tr-desc" name="edit-tr-desc">{{transaction.description}}</textarea>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Update</button>
-        </div>
-    </form>
+  <h3>Transaction details:</h3>
+  <form class="edit-transaction-form" data-id="{{transaction.id}}">
+    <div class="form-group">
+      <label for="edit-tr-type" class="d-inline">Type:</label>
+      <select class="form-select custom-select-lg d-inline" id="edit-tr-type" name="edit-tr-type" onchange="updateCategoryOptions()">
+        <option value="" disabled selected>Select Type</option>
+        <option value="Income">Income</option>
+        <option value="Expense">Expense</option>
+      </select>
+      <label for="edit-tr-category" class="d-inline ml-3">Category:</label>
+      <select class="form-select custom-select-lg d-inline" id="edit-tr-category" name="edit-tr-category">
+        <!-- Placeholder option -->
+        <option value="" disabled selected>Select Category</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="edit-tr-amount">Amount:</label>
+      <input class="form-input" type="text" id="edit-tr-amount" name="edit-tr-amount" value="{{transaction.amount}}" />
+    </div>
+    <div class="form-group">
+      <label for="edit-tr-desc">Description:</label>
+      <textarea class="form-input" id="edit-tr-desc" name="edit-tr-desc">{{transaction.description}}</textarea>
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
 </div>
 
 <script src="/js/update.js"></script>

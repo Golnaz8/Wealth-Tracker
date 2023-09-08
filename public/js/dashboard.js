@@ -51,6 +51,33 @@ const delButtonHandler = async (event) => {
   }
 };
 
+// Get references to the type and category dropdowns
+const typeDropdown = document.getElementById('tr-type');
+const categoryDropdown = document.getElementById('tr-category');
+
+// Define category options for Income and Expense
+const categoryOptions = {
+  Income: ['Work', 'Trade'],
+  Expense: ['Groceries', 'Rent', 'Insurance', 'Entertainment', 'Miscellaneous']
+};
+
+// Event listener to update category options when the type is changed
+typeDropdown.addEventListener('change', function() {
+  const selectedType = typeDropdown.value;
+  // Clear existing options
+  categoryDropdown.innerHTML = '<option value="" disabled selected>Select Category</option>';
+  // Add options based on the selected type
+  categoryOptions[selectedType].forEach(function(option) {
+      const optionElement = document.createElement('option');
+      optionElement.value = option;
+      optionElement.textContent = option;
+      categoryDropdown.appendChild(optionElement);
+  });
+});
+
+// Initialize the category dropdown with the initial placeholder option
+categoryDropdown.innerHTML = '<option value="" disabled selected>Select Category</option>';
+
 // Set up event listeners
 document.querySelector('.new-transaction-form').addEventListener('submit', newFormHandler);
 
