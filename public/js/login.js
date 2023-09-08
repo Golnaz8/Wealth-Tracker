@@ -1,40 +1,53 @@
-// Function to handle form submissions
-const formHandler = async (event, endpoint) => {
+const loginFormHandler = async (event) => {
   event.preventDefault();
 
-  // Collect values from the form
+  // Collect values from the login form
+  const email = document.querySelector('#email-login').value.trim();
+  const password = document.querySelector('#password-login').value.trim();
+
+  if (email && password) {
+    // Send a POST request to the API endpoint
+    const response = await fetch('/api/users/login', {
+      method: 'POST',
+      body: JSON.stringify({ email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      // If successful, redirect the browser to the profile page
+      document.location.replace('/dashboard');
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
+
+const signupFormHandler = async (event) => {
+  event.preventDefault();
+
   const username = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
   if (username && email && password) {
-    try {
-      // Send a POST request to the specified API endpoint
-      const response = await fetch(`/api/users${endpoint}`, {
-        method: 'POST',
-        body: JSON.stringify({ username, email, password }),
-        headers: { 'Content-Type': 'application/json' },
-      });
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      body: JSON.stringify({ username, email, password }),
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-      if (response.ok) {
-        // If successful, redirect the browser to the dashboard
-        document.location.replace('/dashboard');
-      } else {
-        const errorMessage = await response.text();
-        alert(`Error: ${errorMessage}`);
-      }
-    } catch (error) {
-      console.error(error);
-      alert('An error occurred while processing your request.');
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert(response.statusText);
     }
   }
 };
 
-// Event listeners for both login and signup forms
-document.querySelector('.login-form').addEventListener('submit', (event) => {
-  formHandler(event, '/login');
-});
+document
+  .querySelector('.login-form')
+  .addEventListener('submit', loginFormHandler);
 
-document.querySelector('.signup-form').addEventListener('submit', (event) => {
-  formHandler(event, '');
-});
+document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
