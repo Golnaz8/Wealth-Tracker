@@ -1703,3 +1703,19 @@ form [type='radio'] {
     align-content: center;
   }
 }
+
+.custom-select-lg {
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  margin: 0.625rem 0;
+  color: #1b89bc;
+  background-color: #fff; /* Set the initial background color */
+  transition: background-color 0.3s; /* Add a smooth transition effect */
+
+  /* Change background color on hover */
+  &:hover {
+      background-color: #1b89bc; /* Change to your desired hover color */
+      color: #fff; /* Change text color on hover if needed */
+  }
+}
