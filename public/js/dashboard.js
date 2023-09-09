@@ -5,13 +5,21 @@ const newFormHandler = async (event) => {
   const amount = document.querySelector('#tr-amount').value.trim();
   const category = document.querySelector('#tr-category').value.trim();
   const description = document.querySelector('#tr-desc').value.trim();
-  const date = document.querySelector('#tr-date').value; // Get the selected date
+  const dateValue = document.querySelector('#tr-date').value; // Get the selected date
+
+  // Create a JavaScript Date object from the selected date
+  const selectedDate = new Date(dateValue);
+
+  // Add one day to the selected date
+  selectedDate.setDate(selectedDate.getDate() + 1);
+  // Format the adjusted date back to a string
+  const date = selectedDate.toISOString().split('T')[0];
 
   if (type && amount && category && description && date) {
     try {
       const response = await fetch(`/api/transactions`, {
         method: 'POST',
-        body: JSON.stringify({ type, amount, category, description, date }), // Include the date
+        body: JSON.stringify({ type, amount, category, description, date }),
         headers: {
           'Content-Type': 'application/json',
         },
@@ -30,6 +38,7 @@ const newFormHandler = async (event) => {
     alert('Please fill in all fields, including the date.');
   }
 };
+
 
 
 // Function to handle the deletion of a post
