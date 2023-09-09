@@ -1,4 +1,4 @@
-// Function to handle the creation of a new post
+// Function to handle the creation of a new transaction
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -20,16 +20,16 @@ const newFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        throw new Error('Failed to create post');
+        throw new Error('Failed to create transaction');
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred while creating the post.');
+      alert('An error occurred while creating the transaction.');
     }
   }
 };
 
-// Function to handle the deletion of a post
+// Function to handle the deletion of a transaction
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
@@ -42,11 +42,11 @@ const delButtonHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        throw new Error('Failed to delete post');
+        throw new Error('Failed to delete transaction');
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred while deleting the post.');
+      alert('An error occurred while deleting the transaction.');
     }
   }
 };
@@ -62,18 +62,36 @@ const categoryOptions = {
 };
 
 // Event listener to update category options when the type is changed
-typeDropdown.addEventListener('change', function() {
+typeDropdown.addEventListener('change', function () {
   const selectedType = typeDropdown.value;
   // Clear existing options
   categoryDropdown.innerHTML = '<option value="" disabled selected>Select Category</option>';
   // Add options based on the selected type
-  categoryOptions[selectedType].forEach(function(option) {
-      const optionElement = document.createElement('option');
-      optionElement.value = option;
-      optionElement.textContent = option;
-      categoryDropdown.appendChild(optionElement);
+  categoryOptions[selectedType].forEach(function (option) {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.textContent = option;
+    categoryDropdown.appendChild(optionElement);
   });
 });
+
+
+const reportHandler = async () => {
+
+  const response = await fetch(`/report`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    document.location.replace('/report');
+  } else {
+    alert('Failed to render chart');
+  }
+
+};
 
 // Initialize the category dropdown with the initial placeholder option
 categoryDropdown.innerHTML = '<option value="" disabled selected>Select Category</option>';
@@ -85,3 +103,8 @@ const transactionButtons = document.querySelectorAll('.transaction-list button')
 transactionButtons.forEach((button) => {
   button.addEventListener('click', delButtonHandler);
 });
+
+
+document.querySelector('#report-btn').addEventListener('click', reportHandler);
+
+

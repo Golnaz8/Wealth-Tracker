@@ -1,0 +1,136 @@
+<h1>Expeses Report</h1>
+<canvas id="myChart1" width="800" height="500"></canvas>
+
+<!-- Embed data for the first chart -->
+<p data-grocery-sum="{{ totalGroceries }}"></p>
+<p data-rent-sum="{{ totalrents }}"></p>
+<p data-insurance-sum="{{ totalinsurance }}"></p>
+<p data-entertainment-sum="{{ totalentertainment }}"></p>
+<p data-miscellaneous-sum="{{ totalmiscellaneous }}"></p>
+
+<h1>Income Report</h1>
+<canvas id="myChart2" width="400" height="500"></canvas>
+
+<!-- Embed data for the second chart -->
+<p data-work-sum="{{ totalWork }}"></p>
+<p data-trade-sum="{{ totalTrade }}"></p>
+
+
+<h3>Compare your total income with total expense</h3>
+<canvas id="myChart3" width="400" height="500"></canvas>
+
+<!-- Embed data for the third chart -->
+<p data-income-sum="{{ totalIncome }}"></p>
+<p data-expense-sum="{{ totalExpense }}"></p>
+
+
+
+
+<!-- Include JavaScript to render the chart -->
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+
+        const grocerySumElement = document.querySelector('p[data-grocery-sum]');
+        const grocerySum = parseFloat(grocerySumElement.getAttribute('data-grocery-sum'));
+        const rentSumElement = document.querySelector('p[data-rent-sum]');
+        const rentSum = parseFloat(rentSumElement.getAttribute('data-rent-sum'));
+        const insuranceSumElement = document.querySelector('p[data-insurance-sum]');
+        const insuranceSum = parseFloat(insuranceSumElement.getAttribute('data-insurance-sum'));
+        const entertainmentSumElement = document.querySelector('p[data-entertainment-sum]');
+        const entertainmentSum = parseFloat(entertainmentSumElement.getAttribute('data-entertainment-sum'));
+        const miscellaneousSumElement = document.querySelector('p[data-miscellaneous-sum]');
+        const miscellaneousSum = parseFloat(miscellaneousSumElement.getAttribute('data-miscellaneous-sum'));
+
+        const workSumElement = document.querySelector('p[data-work-sum]');
+        const workSum = parseFloat(workSumElement.getAttribute('data-work-sum'));
+        const tradeSumElement = document.querySelector('p[data-trade-sum]');
+        const tradeSum = parseFloat(tradeSumElement.getAttribute('data-trade-sum'));
+
+        const incomeSumElement = document.querySelector('p[data-income-sum]');
+        const incomeSum = parseFloat(incomeSumElement.getAttribute('data-income-sum'));
+        const expenseSumElement = document.querySelector('p[data-expense-sum]');
+        const expenseSum = parseFloat(expenseSumElement.getAttribute('data-expense-sum'));
+
+
+
+        // Create chart1 using Chart.js
+        const ctx = await document.getElementById("myChart1").getContext("2d");
+        const chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: ["Grocery", "Rent", "Insurance", "Entertainment", "Miscellaneous"],
+                datasets: [
+                    {
+                        label: "Total Amount",
+                        data: [grocerySum, rentSum, insuranceSum, entertainmentSum, miscellaneousSum],
+                        backgroundColor: ["rgba(75, 192, 192, 0.8)", "rgba(255, 99, 132, 0.8)", "rgba(99, 99, 255, 0.8)", "rgba(230, 50, 255, 0.8)", "rgba(255, 0, 0, 0.8)"], // Background color for each dataset
+                        borderColor: ["rgba(75, 192, 192, 1)", "rgba(255, 99, 132, 1)", "rgba(99, 99, 255, 1)", "rgba(230, 50, 255, 1)", "rgba(255, 0, 0, 1)"], // Border color for each dataset
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+        // Second Chart
+        const ctx2 = await document.getElementById("myChart2").getContext("2d");
+        const chart2 = new Chart(ctx2, {
+            type: "bar",
+            data: {
+                labels: ["Work", "Trade"],
+                datasets: [
+                    {
+                        label: "Total Amount",
+                        data: [workSum, tradeSum],
+                        backgroundColor: ["rgba(0, 90, 0, 0.8)", "rgba(0, 0, 132, 0.8)"],
+                        borderColor: ["rgba(0, 90, 0, 1)", "rgba(0, 0, 132, 1)"],
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+        // third Chart
+        const ctx3 = await document.getElementById("myChart3").getContext("2d");
+        const chart3 = new Chart(ctx3, {
+            type: "bar",
+            data: {
+                labels: ["Income", "Expense"],
+                datasets: [
+                    {
+                        label: "Total Amount",
+                        data: [incomeSum, expenseSum],
+                        backgroundColor: ["rgba(0, 255, 0, 0.8)", "rgba(255, 0, 0, 0.8)"],
+                        borderColor: ["rgba(0, 255, 0, 1)", "rgba(255, 0, 0, 1)"],
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                responsive: false,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+            },
+        });
+    });
+
+</script>
