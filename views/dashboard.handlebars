@@ -42,12 +42,13 @@
     {{#if transactions.length}}
     <div class="col-md-6">
         <h3>Current Transactions:</h3>
+
         {{#each transactions as |transaction|}}
         <div class="row mb-2 transaction-list">
             <div class="col-md-8">
-                <h4><a href="/transaction/{{transaction.id}}">{{transaction.type}} with amount of:
-                        {{transaction.amount}}</a></h4>
-                <p>On {{transaction.date}}</p>
+                <h6>{{transaction.type}} with amount of:
+                        {{transaction.amount}}</h6>
+                <p>On {{format_date transaction.date}}</p>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-sm btn-danger" data-id="{{transaction.id}}">DELETE</button>
@@ -56,9 +57,11 @@
                 <button class="btn btn-sm btn-info"><a href="/update/{{transaction.id}}">Details</a></button>
             </div>
         </div>
+        <hr>
         {{/each}}
+
         <div>
-            <button class="btn btn-lg btn-dark">Report</button>
+            <button class="btn btn-lg btn-dark" id="report-btn" user-id="{{id}}">Report</button>
         </div>
     </div>
     {{/if}}
