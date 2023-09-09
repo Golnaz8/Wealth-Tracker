@@ -34,10 +34,10 @@ router.put("/:id", withAuth, async (req, res) => {
     const updateResult = await Transaction.update(
       req.body,
       {
-      where: {
-        id: req.params.id,
-      },
-    });
+        where: {
+          id: req.params.id,
+        },
+      });
     return res.status(200).json(updateResult);
   } catch (err) {
     console.log(err);
