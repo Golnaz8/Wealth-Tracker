@@ -1,4 +1,3 @@
-// Function to handle the creation of a new post
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -6,12 +5,13 @@ const newFormHandler = async (event) => {
   const amount = document.querySelector('#tr-amount').value.trim();
   const category = document.querySelector('#tr-category').value.trim();
   const description = document.querySelector('#tr-desc').value.trim();
+  const date = document.querySelector('#tr-date').value; // Get the selected date
 
-  if (type && amount && category && description) {
+  if (type && amount && category && description && date) {
     try {
       const response = await fetch(`/api/transactions`, {
         method: 'POST',
-        body: JSON.stringify({ type, amount, category, description }),
+        body: JSON.stringify({ type, amount, category, description, date }), // Include the date
         headers: {
           'Content-Type': 'application/json',
         },
@@ -26,8 +26,11 @@ const newFormHandler = async (event) => {
       console.error(error);
       alert('An error occurred while creating the post.');
     }
+  } else {
+    alert('Please fill in all fields, including the date.');
   }
 };
+
 
 // Function to handle the deletion of a post
 const delButtonHandler = async (event) => {
@@ -62,16 +65,16 @@ const categoryOptions = {
 };
 
 // Event listener to update category options when the type is changed
-typeDropdown.addEventListener('change', function() {
+typeDropdown.addEventListener('change', function () {
   const selectedType = typeDropdown.value;
   // Clear existing options
   categoryDropdown.innerHTML = '<option value="" disabled selected>Select Category</option>';
   // Add options based on the selected type
-  categoryOptions[selectedType].forEach(function(option) {
-      const optionElement = document.createElement('option');
-      optionElement.value = option;
-      optionElement.textContent = option;
-      categoryDropdown.appendChild(optionElement);
+  categoryOptions[selectedType].forEach(function (option) {
+    const optionElement = document.createElement('option');
+    optionElement.value = option;
+    optionElement.textContent = option;
+    categoryDropdown.appendChild(optionElement);
   });
 });
 

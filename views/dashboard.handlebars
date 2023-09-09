@@ -9,7 +9,7 @@
         <form class="form new-transaction-form">
             <div class="form-group">
                 <label for="transaction-type" class="d-inline">Type:</label>
-               <select class="form-select custom-select-lg d-inline" id="tr-type" name="tr-type">
+                <select class="form-select custom-select-lg d-inline" id="tr-type" name="tr-type">
                     <option value="" disabled selected>Select Type</option>
                     <!-- Placeholder option -->
                     <option value="Income">Income</option>
@@ -17,23 +17,24 @@
                 </select>
                 <label for="transaction-category" class="d-inline">Category:</label>
                 <select class="form-select custom-select-lg d-inline" id="tr-category" name="tr-category">
-                   <!-- Placeholder option -->
-                   <option value="" disabled selected>Select Category</option>
+                    <!-- Placeholder option -->
+                    <option value="" disabled selected>Select Category</option>
                 </select>
             </div>
-            
+
             <div class="form-group">
                 <label for="transaction-amount">Amount:</label>
                 <input class="form-input" id="tr-amount" name="tr-amount" />
             </div>
             <div class="form-group">
+                <label for="tr-date">Date:</label>
+                <input type="date" id="tr-date" name="tr-date">
+            </div>
+            <div class="form-group">
                 <label for="transaction-desc">Description:</label>
                 <textarea class="form-input" id="tr-desc" name="tr-desc"></textarea>
             </div>
-            {{!-- <div class="form-group">
-                <label for="transaction-date">date</label>
-                <textarea class="form-input" id="tr-date" name="tr-date"></textarea>
-            </div> --}}
+
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Create</button>
             </div>
@@ -47,7 +48,7 @@
         <div class="row mb-2 transaction-list">
             <div class="col-md-8">
                 <h6>{{transaction.type}} with amount of:
-                        {{transaction.amount}}</h6>
+                    {{transaction.amount}}</h6>
                 <p>On {{format_date transaction.date}}</p>
             </div>
             <div class="col-md-2">
