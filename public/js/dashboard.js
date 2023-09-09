@@ -1,4 +1,4 @@
-// Function to handle the creation of a new transaction
+// Function to handle the creation of a new post
 const newFormHandler = async (event) => {
   event.preventDefault();
 
@@ -29,7 +29,7 @@ const newFormHandler = async (event) => {
   }
 };
 
-// Function to handle the deletion of a transaction
+// Function to handle the deletion of a post
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
