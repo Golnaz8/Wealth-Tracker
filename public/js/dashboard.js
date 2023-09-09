@@ -20,11 +20,11 @@ const newFormHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        throw new Error('Failed to create post');
+        throw new Error('Failed to create transaction');
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred while creating the post.');
+      alert('An error occurred while creating the transaction.');
     }
   } else {
     alert('Please fill in all fields, including the date.');
@@ -45,11 +45,11 @@ const delButtonHandler = async (event) => {
       if (response.ok) {
         document.location.replace('/dashboard');
       } else {
-        throw new Error('Failed to delete post');
+        throw new Error('Failed to delete transaction');
       }
     } catch (error) {
       console.error(error);
-      alert('An error occurred while deleting the post.');
+      alert('An error occurred while deleting the transaction.');
     }
   }
 };
@@ -78,6 +78,24 @@ typeDropdown.addEventListener('change', function () {
   });
 });
 
+
+const reportHandler = async () => {
+
+  const response = await fetch(`/report`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok) {
+    document.location.replace('/report');
+  } else {
+    alert('Failed to render chart');
+  }
+
+};
+
 // Initialize the category dropdown with the initial placeholder option
 categoryDropdown.innerHTML = '<option value="" disabled selected>Select Category</option>';
 
@@ -88,3 +106,8 @@ const transactionButtons = document.querySelectorAll('.transaction-list button')
 transactionButtons.forEach((button) => {
   button.addEventListener('click', delButtonHandler);
 });
+
+
+document.querySelector('#report-btn').addEventListener('click', reportHandler);
+
+
