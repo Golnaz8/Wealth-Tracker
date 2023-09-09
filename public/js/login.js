@@ -17,10 +17,13 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      // Display the "Wrong Password" error message
+      const loginError = document.querySelector('#login-error');
+      loginError.textContent = 'Wrong Password';
     }
   }
 };
+
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
