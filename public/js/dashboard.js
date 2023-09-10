@@ -120,3 +120,29 @@ transactionButtons.forEach((button) => {
 document.querySelector('#report-btn').addEventListener('click', reportHandler);
 
 
+// Get references to the amount input field and the formatted amount display element
+const amountInput = document.getElementById('tr-amount');
+const formattedAmount = document.getElementById('formattedAmount');
+
+// Add a "blur" event listener to the amount input
+amountInput.addEventListener('blur', () => {
+  // Get the user-entered amount as a number
+  const amount = parseFloat(amountInput.value);
+
+  if (!isNaN(amount)) {
+    // Create an Intl.NumberFormat instance for formatting in Canada (English)
+    const formatter = new Intl.NumberFormat('en-CA', {
+      style: 'currency',
+      currency: 'CAD',
+      minimumFractionDigits: 2,
+    });
+
+    // Format the amount
+    const formatted = formatter.format(amount);
+
+    // Display the formatted amount in the span element
+    formattedAmount.textContent = formatted;
+  }
+});
+
+

@@ -157,10 +157,13 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
 
     const user = userData.get({ plain: true });
+    const reversedTransactions = user.transactions.reverse();
+
 
     res.render('dashboard', {
       ...user,
-      logged_in: true
+      transactions: reversedTransactions,
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
