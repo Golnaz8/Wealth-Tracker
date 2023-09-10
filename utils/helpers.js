@@ -4,7 +4,7 @@ module.exports = {
     return date.toLocaleDateString();
   },
   format_amount: (amount) => {
-    // format large numbers with commas
+    // Format large numbers with commas
     return parseInt(amount).toLocaleString();
   },
   get_emoji: () => {
@@ -18,5 +18,13 @@ module.exports = {
     } else {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
+  },
+  gte: (value1, value2) => {
+    // Check if value1 is greater than or equal to value2
+    return value1 >= value2;
+  },
+  eq: (value1, value2) => {
+    // Check if value1 is equal to value2
+    return value1 === value2;
   },
 };
