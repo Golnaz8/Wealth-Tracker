@@ -5,15 +5,16 @@ const newFormHandler = async (event) => {
   const amount = document.querySelector('#tr-amount').value.trim();
   const category = document.querySelector('#tr-category').value.trim();
   const description = document.querySelector('#tr-desc').value.trim();
-  const dateValue = document.querySelector('#tr-date').value; // Get the selected date
+  const dateValue = document.querySelector('#tr-date').value;
 
-  // Create a JavaScript Date object from the selected date
+
   const selectedDate = new Date(dateValue);
-
   // Add one day to the selected date
   selectedDate.setDate(selectedDate.getDate() + 1);
   // Format the adjusted date back to a string
   const date = selectedDate.toISOString().split('T')[0];
+
+
 
   if (type && amount && category && description && date) {
     try {
@@ -41,7 +42,7 @@ const newFormHandler = async (event) => {
 
 
 
-// Function to handle the deletion of a post
+// Function to handle the deletion of a transaction
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
@@ -110,13 +111,10 @@ categoryDropdown.innerHTML = '<option value="" disabled selected>Select Category
 
 // Set up event listeners
 document.querySelector('.new-transaction-form').addEventListener('submit', newFormHandler);
-
 const transactionButtons = document.querySelectorAll('.transaction-list button');
 transactionButtons.forEach((button) => {
   button.addEventListener('click', delButtonHandler);
 });
-
-
 document.querySelector('#report-btn').addEventListener('click', reportHandler);
 
 

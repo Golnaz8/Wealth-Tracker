@@ -567,6 +567,11 @@ a:hover {
   margin-right: 1.625rem;
 }
 
+.mr-6 {
+  margin-right: 10%;
+}
+
+
 .mr-auto {
   margin-right: auto;
 }
