@@ -2,20 +2,21 @@
   <h3>Transaction details:</h3>
   <form class="edit-transaction-form" data-id="{{transaction.id}}">
     <div class="form-group">
-      <label for="edit-tr-type" class="d-inline">Type:</label>
+      <label for="edit-tr-type" class="d-inline mr-6">Type:</label>
       <select class="form-select custom-select-lg d-inline" id="edit-tr-type" name="edit-tr-type" onchange="updateCategoryOptions()">
         <option value="" disabled selected>Select Type</option>
         <option value="Income">Income</option>
         <option value="Expense">Expense</option>
       </select>
-      <label for="edit-tr-category" class="d-inline ml-3">Category:</label>
+      <br>
+      <label for="edit-tr-category" class="d-inline mr-3">Category:</label>
       <select class="form-select custom-select-lg d-inline" id="edit-tr-category" name="edit-tr-category">
         <!-- Placeholder option -->
         <option value="" disabled selected>Select Category</option>
       </select>
     </div>
     <div class="form-group">
-        <label for="tr-date">Date:</label>
+        <label for="tr-date" class="mr-6">Date:</label>
         <input class="custom-select-lg" type="date" id="tr-date" name="tr-date">
     </div>
     <div class="form-group">
