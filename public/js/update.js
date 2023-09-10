@@ -6,14 +6,23 @@ const editFormHandler = async (event) => {
   const amount = document.querySelector('#edit-tr-amount').value.trim();
   const category = document.querySelector('#edit-tr-category').value.trim();
   const description = document.querySelector('#edit-tr-desc').value.trim();
+  const dateValue = document.querySelector('#edit-tr-date').value.trim();
 
-  if (type && amount && category && description) {
+
+  const selectedDate = new Date(dateValue);
+  selectedDate.setDate(selectedDate.getDate() + 1);
+  // Format the adjusted date back to a string
+  const date = selectedDate.toISOString().split('T')[0];
+
+
+
+  if (type && amount && category && description && date) {
     const id = event.currentTarget.getAttribute('data-id');
     console.log(`Edit button clicked for post ID: ${id}`);
 
     const response = await fetch(`/api/transactions/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({ type, amount, category, description }),
+      body: JSON.stringify({ type, amount, category, description, date }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -22,15 +31,19 @@ const editFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert('Failed to update post');
+      alert('Failed to update transaction');
     }
   }
 };
 
+
+
 // Function to update category options based on selected type
 const updateCategoryOptions = () => {
+
   const transactionType = document.querySelector('#edit-tr-type').value;
-  const categoryDropdown = document.querySelector('#edit-tr-category');
+  const categoryDropdown = document.querySelector('#edit-tr-category').value;
+
 
   // Clear existing options
   categoryDropdown.innerHTML = '';
@@ -83,7 +96,7 @@ const updateCategoryOptions = () => {
 };
 
 // Set up event listener for "transaction-type" change
-document.querySelector('#edit-tr-type').addEventListener('change', updateCategoryOptions);
+document.querySelector('#edit-tr-type').addEventListener('submit', updateCategoryOptions);
 
 // Set up event listener for edit form submission
 document.querySelector('.edit-transaction-form').addEventListener('submit', editFormHandler);

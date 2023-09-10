@@ -4,24 +4,34 @@
     <div class="form-group">
       <label for="edit-tr-type" class="d-inline mr-6">Type:</label>
       <select class="form-select custom-select-lg d-inline" id="edit-tr-type" name="edit-tr-type" onchange="updateCategoryOptions()">
-        <option value="" disabled selected>Select Type</option>
-        <option value="Income">Income</option>
-        <option value="Expense">Expense</option>
+        <option value="{{transaction.type}}">{{transaction.type}}</option>
+        <option value="Income" data-is-income="true">Income</option>
+        <option value="Expense" data-is-expense="true">Expense</option>
       </select>
       <br>
       <label for="edit-tr-category" class="d-inline mr-3">Category:</label>
-      <select class="form-select custom-select-lg d-inline" id="edit-tr-category" name="edit-tr-category">
-        <!-- Placeholder option -->
-        <option value="" disabled selected>Select Category</option>
+      <select class="form-select custom-select-lg d-inline" id="edit-tr-category" name="edit-tr-category" onchange="updateCategoryOptions()">
+        <option value="{{transaction.category}}">{{transaction.category}}</option>
+        <option value="Groceries">Groceries</option>
+        <option value="Rent">Rent</option>
+        <option value="Insurance">Insurance</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Miscellaneous">Miscellaneous</option>
+        <option value="Work">Work</option>
+        <option value="Trade">Trade</option>
+
       </select>
     </div>
     <div class="form-group">
-        <label for="tr-date" class="mr-6">Date:</label>
-        <input class="custom-select-lg" type="date" id="tr-date" name="tr-date">
+      <label for="tr-date" class="mr-6">Date:</label>
+
+      <input class="custom-select-lg" type="date" id="edit-tr-date" name="tr-date"
+      value="{{format_date transaction.date}}" />
     </div>
     <div class="form-group">
       <label for="edit-tr-amount">Amount:</label>
-      <input class="form-input" type="text" id="edit-tr-amount" name="edit-tr-amount" value="{{format_amount transaction.amount}}"/>
+      <input class="form-input" type="text" id="edit-tr-amount" name="edit-tr-amount"
+        value="{{format_amount transaction.amount}}" />
     </div>
     <div class="form-group">
       <label for="edit-tr-desc">Description:</label>
