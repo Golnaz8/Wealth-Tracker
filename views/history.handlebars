@@ -8,18 +8,27 @@
 <div class="row mt-4">
     <div class="col-md-12">
         {{#if transactions}}
-            {{#each transactions as |transaction|}}
-                <div class="row mb-2 transaction-list">
-                    <div class="col-md-8">
-                        <h6>{{transaction.type}} for {{transaction.category}} with amount of: ${{format_amount transaction.amount}}</h6>
-                        <p>On {{format_date transaction.date}}</p>
-                        <p>Description: {{transaction.description}}</p>
-                    </div>
-                </div>
-                <hr>
-            {{/each}}
+        {{#each transactions as |transaction|}}
+        <div class="row mb-2 transaction-list">
+            <div class="col-md-8">
+                <h6>{{transaction.type}} for {{transaction.category}} with amount of: ${{format_amount
+                    transaction.amount}}</h6>
+                <p>On {{format_date transaction.date}}</p>
+                <p>Description: {{transaction.description}}</p>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-sm btn-danger" data-id="{{transaction.id}}">DELETE</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-sm btn-info"><a href="/update/{{transaction.id}}">Details</a></button>
+            </div>
+        </div>
+        <hr>
+        {{/each}}
         {{else}}
-            <p>No transaction history available.</p>
+        <p>No transaction history available.</p>
         {{/if}}
     </div>
 </div>
+
+<script src="/js/history.js"></script>
