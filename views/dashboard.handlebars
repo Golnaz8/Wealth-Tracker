@@ -63,14 +63,10 @@
         </div>
         <hr>
         {{/each}}
-        <!-- Add the following HTML elements for pagination -->
-        {{!-- <div class="pagination">
-            <button class="btn btn-sm btn-primary" id="prev-page-btn" disabled>Previous</button>
-            <button class="btn btn-sm btn-primary" id="next-page-btn">Next</button>
-        </div> --}}
 
-        <div>
+        <div class="button-container">
             <button class="btn btn-lg btn-dark" id="report-btn" user-id="{{id}}">Chart Report</button>
+            <a href="/history?transactions={{transactions}}" class="btn btn-lg btn-info">History</a>
         </div>
     </div>
     {{/if}}
