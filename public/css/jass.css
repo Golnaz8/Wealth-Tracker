@@ -420,7 +420,7 @@ button {
 }
 
 a {
-  color: #1b89bc;
+  color: #c7d4db;
   text-decoration: none;
 }
 
@@ -1729,4 +1729,8 @@ form [type='radio'] {
   display: flex;
   justify-content: space-between;
   margin: 20px 10px;
+}
+
+#details {
+  color: white;
 }
