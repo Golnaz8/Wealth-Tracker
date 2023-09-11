@@ -64,7 +64,17 @@
         <hr>
         {{/each}}
 
+        <div>
+            <label for="tr-date">startDate:</label>
+            <input class="custom-select-lg" type="date" id="start-tr-date" name="start-tr-date">
+            <br>
+            <label for="tr-date" class="mr-1">endDate:</label>
+            <input class="custom-select-lg" type="date" id="end-tr-date" name="end-tr-date">
+            <br>
+        </div>
+
         <div class="button-container">
+
             <button class="btn btn-lg btn-dark" id="report-btn" user-id="{{id}}">Chart Report</button>
             <a href="/history?transactions={{transactions}}" class="btn btn-lg btn-info">History</a>
         </div>
