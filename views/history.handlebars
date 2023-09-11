@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-auto">
+        <h2>Transaction History</h2>
+        <hr>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        {{#if transactions}}
+            {{#each transactions as |transaction|}}
+                <div class="row mb-2 transaction-list">
+                    <div class="col-md-8">
+                        <h6>{{transaction.type}} for {{transaction.category}} with amount of: ${{format_amount transaction.amount}}</h6>
+                        <p>On {{format_date transaction.date}}</p>
+                        <p>Description: {{transaction.description}}</p>
+                    </div>
+                </div>
+                <hr>
+            {{/each}}
+        {{else}}
+            <p>No transaction history available.</p>
+        {{/if}}
+    </div>
+</div>

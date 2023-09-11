@@ -143,4 +143,6 @@ amountInput.addEventListener('blur', () => {
   }
 });
 
-
+document.getElementById('history-btn').addEventListener('click', () => {
+  window.location.href = '/history'; // Redirect to the history page
+});

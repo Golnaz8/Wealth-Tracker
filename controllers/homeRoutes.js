@@ -216,19 +216,17 @@ router.get('/report', withAuth, async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
+    // Find the logged-in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Transaction }],
     });
-
     const user = userData.get({ plain: true });
     const reversedTransactions = user.transactions.reverse();
-
-
+    const first5ReversedTransactions = reversedTransactions.slice(0, 5);
     res.render('dashboard', {
       ...user,
-      transactions: reversedTransactions,
+      transactions: first5ReversedTransactions,
       logged_in: true,
     });
   } catch (err) {
@@ -247,4 +245,29 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Define a route for the "history" page
+router.get('/history', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Transaction }],
+    });
+
+    const user = userData.get({ plain: true });
+    const reversedTransactions = user.transactions.reverse();
+
+
+    res.render('history', {
+      ...user,
+      transactions: reversedTransactions,
+      logged_in: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
 module.exports = router;
+
