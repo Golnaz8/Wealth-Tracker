@@ -152,6 +152,8 @@ router.get('/report', withAuth, async (req, res) => {
   try {
     const userId = req.session.user_id;
 
+    // const { satartData, endDate } = req.query; ???????
+
     const result = await Transaction.findAll({
       attributes: [
         [sequelize.fn('SUM', sequelize.literal('CASE WHEN category = "Groceries" THEN amount ELSE 0 END')), 'totalGroceries'],
@@ -191,6 +193,19 @@ router.get('/report', withAuth, async (req, res) => {
     const totalIncome = result.length ? result[0].dataValues.totalIncome : 0;
     const totalExpense = result.length ? result[0].dataValues.totalExpense : 0;
 
+    console.log(`======================================\n=====================================`);
+    console.log(totalExpense);
+    console.log(typeof totalExpense);
+    console.log(totalIncome);
+    console.log(typeof totalIncome);
+    var numExpense = parseInt(totalExpense);
+    console.log(typeof numExpense);
+    var numIncom = parseInt(totalIncome);
+    console.log(typeof numIncom);
+    var positiveNetIncome = numIncom > numExpense;
+    console.log(positiveNetIncome);
+    var negativeNetIncome = numIncom <= numExpense;
+    console.log(negativeNetIncome);
 
 
     res.render('report', {
@@ -203,7 +218,9 @@ router.get('/report', withAuth, async (req, res) => {
       totalTrade,
       totalIncome,
       totalExpense,
-      logged_in: true
+      logged_in: true,
+      positiveNetIncome,
+      negativeNetIncome,
     });
   } catch (error) {
     console.error('Error fetching data:', error);
