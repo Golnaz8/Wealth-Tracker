@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 <label for="amount" class="mr-5">Amount:</label>
-                <input type="number" id="tr-amount" name="tr-amount" step="0.01">
+                <input class="custom-select-lg" type="number" id="tr-amount" name="tr-amount" step="0.01">
                 <span id="formattedAmount"></span>
             </div>
 
@@ -49,8 +49,8 @@
         {{#each transactions as |transaction|}}
         <div class="row mb-2 transaction-list">
             <div class="col-md-8">
-                <h6>{{transaction.type}} with amount of:
-                    {{format_amount transaction.amount}}</h6>
+                <h6>{{transaction.type}} for {{transaction.category}} with amount of:
+                    ${{format_amount transaction.amount}}</h6>
                 <p>On {{format_date transaction.date}}</p>
                 <p>Description: {{transaction.description}}</p> <!-- Display the description here -->
             </div>
@@ -64,10 +64,10 @@
         <hr>
         {{/each}}
         <!-- Add the following HTML elements for pagination -->
-        <div class="pagination">
+        {{!-- <div class="pagination">
             <button class="btn btn-sm btn-primary" id="prev-page-btn" disabled>Previous</button>
             <button class="btn btn-sm btn-primary" id="next-page-btn">Next</button>
-        </div>
+        </div> --}}
 
         <div>
             <button class="btn btn-lg btn-dark" id="report-btn" user-id="{{id}}">Chart Report</button>
