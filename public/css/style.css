@@ -1,9 +1,14 @@
+header,
+.project:not(:last-child) {
+  background-color: black;
+  border-bottom: none;
+}
 
-header, .project:not(:last-child) {
-  background-color: black; /* Set the background color of the header to black */
-  border-bottom: none; /* Removed the grey line */
- }
- .no-button {
+a:hover {
+  text-decoration: none;
+}
+
+.no-button {
   background: none;
   border: none;
   padding: 0;
@@ -11,38 +16,42 @@ header, .project:not(:last-child) {
   color: #FFFFFF;
   text-decoration: none;
   font-size: 100%;
- }
- .no-button:hover {
+}
+
+.no-button:hover {
   color: #ABC6D2;
   text-decoration: underline;
- }
- /* Slideshow styles */
- .slideshow-container {
-  max-width: 800px;
-  position: relative;
-  margin: auto;
- }
- .mySlides {
-  display: none;
- }
- img {
+}
+
+img {
   width: 100%;
- }
- /* Additional styles for logo and navigation links */
- .logo-container {
-  flex: 1; /* Make the logo container grow to fill available space */
- }
- .logo {
-  max-width: 100px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
- }
- .nav-links {
-  flex: 2; /* Make the navigation links container take up twice the space of the logo container */
-  display: flex; /* Display the navigation links in a row */
-  justify-content: flex-end; /* Align the navigation links to the right */
-  align-items: center; /* Vertically center the navigation links */
- }
- /* Adjust the margin between navigation links if needed */
- .nav-links h3 {
+}
+
+/* Additional styles for logo and navigation links */
+.logo-container {
+  flex: 1;
+  /* Make the logo container grow to fill available space */
+}
+
+.logo {
+  max-width: 100px;
+  /* Adjust the width as needed */
+  height: auto;
+  /* Maintain aspect ratio */
+}
+
+.nav-links {
+  flex: 2;
+  /* Make the navigation links container take up twice the space of the logo container */
+  display: flex;
+  /* Display the navigation links in a row */
+  justify-content: flex-end;
+  /* Align the navigation links to the right */
+  align-items: center;
+  /* Vertically center the navigation links */
+}
+
+/* Adjust the margin between navigation links if needed */
+.nav-links h3 {
   margin-right: 20px;
- }
+}
