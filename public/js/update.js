@@ -6,7 +6,7 @@ const editFormHandler = async (event) => {
   const amount = document.querySelector('#edit-tr-amount').value.trim();
   const category = document.querySelector('#edit-tr-category').value.trim();
   const description = document.querySelector('#edit-tr-desc').value.trim();
-  const dateValue = document.querySelector('#edit-tr-date').value;
+  const dateValue = document.querySelector('#edit-tr-date').value.trim();
 
 
   const selectedDate = new Date(dateValue);
