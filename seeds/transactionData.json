@@ -1,0 +1,37 @@
+[
+    {
+        "amount": 50.00,
+        "type": "Expense",
+        "category": "Entertainment",
+        "description": "Dinner at a restaurant",
+        "date": "2023-09-05"
+    },
+    {
+        "amount": 1500.00,
+        "type": "Expense",
+        "category": "Rent",
+        "description": "Monthly rent payment",
+        "date": "2023-09-10"
+    },
+    {
+        "amount": 50.00,
+        "type": "Income",
+        "category": "Work",
+        "description": "Monthly salary deposit",
+        "date": "2023-09-11"
+    },
+    {
+        "amount": 75.00,
+        "type": "Expense",
+        "category": "Groceries",
+        "description": "Groceries shopping at Walmart",
+        "date": "2023-09-08"
+    },
+    {
+        "amount": 100.00,
+        "type": "Expense",
+        "category": "Groceries",
+        "description": "Weekly groceries at Walmart at Costco",
+        "date": "2023-09-07"
+    }
+]
