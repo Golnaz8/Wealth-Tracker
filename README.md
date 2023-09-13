@@ -48,7 +48,7 @@ Wealth Tracker is a web application that allows users to create and manage their
 
 ## Live Demo
 Check out the live version of this project:
-https://floating-beyond-43321-5f3f534e0b0a.herokuapp.com/
+https://boiling-gorge-22354-0c68df1ecb5a.herokuapp.com/
 
 ## Credits
 This project was independently developed by the following developers with their respective contact information:

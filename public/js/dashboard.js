@@ -83,8 +83,21 @@ typeDropdown.addEventListener('change', function () {
 
 
 const reportHandler = async () => {
+
+  // I shoul write some thing like this here but how can I pass it to router? it is a GET router I should ask Sean
+   const start = document.querySelector('#datepicker1').value;
+   const end = document.querySelector('#datepicker2').value;
+
+   const foStart = start.split("/");
+   const startDate = foStart[2] + "-" + foStart[0] + "-" + foStart[1];
+
+   const foEnd = end.split("/");
+   const endDate = foEnd[2] + "-" + foEnd[0] + "-" + foEnd[1];
+
+
+  const url = `/report?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`;
   
-     const response = await fetch(`/report` , {
+     const response = await fetch(url , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -92,7 +105,10 @@ const reportHandler = async () => {
     });
 
     if (response.ok) {
-      document.location.replace('/report');
+      console.log(`%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%`);
+      console.log('Formatted Start Date:', startDate);
+      console.log('Formatted End Date:', endDate);
+       document.location.replace(url);
     } else {
       alert('Failed to render chart');
     }
@@ -136,4 +152,6 @@ amountInput.addEventListener('blur', () => {
   }
 });
 
-
+// document.getElementById('history-btn').addEventListener('click', () => {
+//   window.location.href = '/history'; // Redirect to the history page
+// });

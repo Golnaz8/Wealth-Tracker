@@ -6,6 +6,7 @@ const { Sequelize } = require('sequelize');
 
 
 
+
 router.get('/', async (req, res) => {
   try {
     // Get all transactions and JOIN with user data
@@ -66,6 +67,13 @@ router.get('/report', withAuth, async (req, res) => {
   try {
     const userId = req.session.user_id;
 
+     const startDate = req.query.startDate;
+     const endDate  = req.query.endDate;
+
+    //  const star = new Date(startDate);
+    //  const end = new Date(endDate);
+
+
     const result = await Transaction.findAll({
       attributes: [
         [sequelize.fn('SUM', sequelize.literal('CASE WHEN category = "Groceries" THEN amount ELSE 0 END')), 'totalGroceries'],
@@ -92,6 +100,11 @@ router.get('/report', withAuth, async (req, res) => {
           { type: 'Income' },
           { type: 'Expense' },
         ],
+      
+        date: {
+          [Sequelize.Op.gte]: startDate, 
+          [Sequelize.Op.lte]: endDate,   
+        },
       },
     });
 
@@ -118,6 +131,8 @@ router.get('/report', withAuth, async (req, res) => {
     console.log(positiveNetIncome);
     var negativeNetIncome = numIncom <= numExpense;
     console.log(negativeNetIncome);
+    console.log(startDate);
+    console.log(endDate);
 
 
     res.render('report', {
