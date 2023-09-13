@@ -91,19 +91,25 @@ typeDropdown.addEventListener('change', function () {
 
 const reportHandler = async () => {
 
-  const response = await fetch(`/report`, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  // I shoul write some thing like this here but how can I pass it to router? it is a GET router I should ask Sean
+  // const startDate = document.querySelector('#start-tr-date').value;
+  // const endDate = document.querySelector('#end-tr-date').value;
 
-  if (response.ok) {
-    document.location.replace('/report');
-  } else {
-    alert('Failed to render chart');
-  }
+  //const url = `/report?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`;
+  
+     const response = await fetch(`/report`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
+    if (response.ok) {
+      document.location.replace('/report');
+    } else {
+      alert('Failed to render chart');
+    }
+  
 };
 
 // Initialize the category dropdown with the initial placeholder option
@@ -137,7 +143,12 @@ amountInput.addEventListener('blur', () => {
 
     // Format the amount
     const formatted = formatter.format(amount);
+
+    // Display the formatted amount in the span element
     formattedAmount.textContent = formatted;
   }
 });
 
+document.getElementById('history-btn').addEventListener('click', () => {
+  window.location.href = '/history'; // Redirect to the history page
+});
