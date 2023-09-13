@@ -26,5 +26,3 @@ const transactionButtons = document.querySelectorAll('.transaction-list button')
 transactionButtons.forEach((button) => {
   button.addEventListener('click', delButtonHandler);
 });
-
-
