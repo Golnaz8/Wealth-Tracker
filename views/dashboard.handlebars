@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="tr-date" class="mr-6">Date:</label>
-                <input class="custom-select-lg" type="date" id="tr-date" name="tr-date">
+                <input class="custom-select-lg" type="text" id="datepicker" name="tr-date">
             </div>
             <div class="form-group">
                 <label for="amount" class="mr-5">Amount:</label>
@@ -52,7 +52,7 @@
                 <h6>{{transaction.type}} for {{transaction.category}} with amount of:
                     ${{format_amount transaction.amount}}</h6>
                 <p>On {{format_date transaction.date}}</p>
-                <p>Description: {{transaction.description}}</p> 
+                <p>Description: {{transaction.description}}</p>
             </div>
             <div class="col-md-2">
                 <button class="btn btn-sm btn-danger" data-id="{{transaction.id}}">DELETE</button>
@@ -73,4 +73,5 @@
     </div>
     {{/if}}
 </div>
+
 <script src="/js/dashboard.js"></script>

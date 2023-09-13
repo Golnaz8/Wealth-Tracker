@@ -3,14 +3,16 @@
   <form class="edit-transaction-form" data-id="{{transaction.id}}">
     <div class="form-group">
       <label for="edit-tr-type" class="d-inline mr-6">Type:</label>
-      <select class="form-select custom-select-lg d-inline" id="edit-tr-type" name="edit-tr-type" onchange="updateCategoryOptions()">
+      <select class="form-select custom-select-lg d-inline" id="edit-tr-type" name="edit-tr-type"
+        onchange="updateCategoryOptions()">
         <option value="{{transaction.type}}">{{transaction.type}}</option>
         <option value="Income" data-is-income="true">Income</option>
         <option value="Expense" data-is-expense="true">Expense</option>
       </select>
       <br>
       <label for="edit-tr-category" class="d-inline mr-3">Category:</label>
-      <select class="form-select custom-select-lg d-inline" id="edit-tr-category" name="edit-tr-category" onchange="updateCategoryOptions()">
+      <select class="form-select custom-select-lg d-inline" id="edit-tr-category" name="edit-tr-category"
+        onchange="updateCategoryOptions()">
         <option value="{{transaction.category}}">{{transaction.category}}</option>
         <option value="Groceries">Groceries</option>
         <option value="Rent">Rent</option>
@@ -24,14 +26,12 @@
     </div>
     <div class="form-group">
       <label for="tr-date" class="mr-6">Date:</label>
-
-      <input class="custom-select-lg" type="date" id="edit-tr-date" name="tr-date"
-      value="{{format_date transaction.date}}" />
+      <input class="custom-select-lg" type="text" id="datepicker" name="tr-date"
+        value="{{format_date transaction.date}}" />
     </div>
     <div class="form-group">
       <label for="edit-tr-amount">Amount:</label>
-      <input class="form-input" type="text" id="edit-tr-amount" name="edit-tr-amount"
-        value="{{transaction.amount}}" />
+      <input class="form-input" type="text" id="edit-tr-amount" name="edit-tr-amount" value="{{transaction.amount}}" />
     </div>
     <div class="form-group">
       <label for="edit-tr-desc">Description:</label>

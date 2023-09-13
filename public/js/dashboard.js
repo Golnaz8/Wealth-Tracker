@@ -5,14 +5,7 @@ const newFormHandler = async (event) => {
   const amount = document.querySelector('#tr-amount').value.trim();
   const category = document.querySelector('#tr-category').value.trim();
   const description = document.querySelector('#tr-desc').value.trim();
-  const dateValue = document.querySelector('#tr-date').value;
-
-
-  const selectedDate = new Date(dateValue);
-  // Add one day to the selected date
-  selectedDate.setDate(selectedDate.getDate() + 1);
-  // Format the adjusted date back to a string
-  const date = selectedDate.toISOString().split('T')[0];
+  const date = document.querySelector('#datepicker').value;
 
 
 
@@ -90,14 +83,8 @@ typeDropdown.addEventListener('change', function () {
 
 
 const reportHandler = async () => {
-
-  // I shoul write some thing like this here but how can I pass it to router? it is a GET router I should ask Sean
-  // const startDate = document.querySelector('#start-tr-date').value;
-  // const endDate = document.querySelector('#end-tr-date').value;
-
-  //const url = `/report?startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`;
   
-     const response = await fetch(`/report`, {
+     const response = await fetch(`/report` , {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -149,6 +136,4 @@ amountInput.addEventListener('blur', () => {
   }
 });
 
-document.getElementById('history-btn').addEventListener('click', () => {
-  window.location.href = '/history'; // Redirect to the history page
-});
+
