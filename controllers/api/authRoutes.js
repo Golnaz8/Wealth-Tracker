@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+
+
 //to create a user
 router.post('/', async (req, res) => {
   try {
@@ -13,6 +15,8 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
 //to login a user and check the password if it is correct
 router.post('/login', async (req, res) => {
   try {
@@ -39,6 +43,8 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+
 // to logout a user
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
@@ -49,4 +55,6 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+
 module.exports = router;

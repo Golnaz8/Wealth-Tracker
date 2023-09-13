@@ -61,98 +61,10 @@ router.get('/update/:id', withAuth, async (req, res) => {
 });
 
 
-// router.get('/report', withAuth, async (req, res) => {
-//   try {
-//     // Find the logged in user based on the session ID
-//     const userData = await User.findByPk(req.session.user_id, {
-//       attributes: { exclude: ['password'] },
-//       include: [{ model: Transaction }],
-//       attributes: {
-//         include: [
-//           [
-//             // Use plain SQL to add up the total grocery
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.category = "Groceries")'
-//             ),
-//             'totalGroceries',
-//           ],
-//           [
-//             // Use plain SQL to add up the total rent
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.category = "Rent")'
-//             ),
-//             'totalrents',
-//           ],
-//           [
-//             // Use plain SQL to add up the total Insurance
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.category = "Insurance")'
-//             ),
-//             'totalinsurance',
-//           ],
-//           [
-//             // Use plain SQL to add up the total Entertainment
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.category = "Entertainment")'
-//             ),
-//             'totalentertainment',
-//           ],
-//           [
-//             // Use plain SQL to add up the total Miscellaneous
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.category = "Miscellaneous")'
-//             ),
-//             'totalmiscellaneous',
-//           ],
-//           [
-//             // Use plain SQL to add up the total Miscellaneous
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.category = "Work")'
-//             ),
-//             'totalWork',
-//           ],
-//           [
-//             // Use plain SQL to add up the total Miscellaneous
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.category = "Trade")'
-//             ),
-//             'totalTrade',
-//           ],
-//           [
-//             // Use plain SQL to add up the total Miscellaneous
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.type = "Income")'
-//             ),
-//             'totalIncome',
-//           ],
-//           [
-//             // Use plain SQL to add up the total Miscellaneous
-//             sequelize.literal(
-//               '(SELECT SUM(amount) FROM transaction WHERE transaction.type = "Expense")'
-//             ),
-//             'totalExpense',
-//           ],
-//         ],
-//       },
-//     });
-
-//     const user = userData.get({ plain: true });
-
-//     res.render('report', {
-//       ...user,
-//       logged_in: true
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 // Define the GET router for report page
 router.get('/report', withAuth, async (req, res) => {
   try {
     const userId = req.session.user_id;
-
-    // const { satartData, endDate } = req.query; ???????
 
     const result = await Transaction.findAll({
       attributes: [
